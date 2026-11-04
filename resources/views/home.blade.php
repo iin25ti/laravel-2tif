@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container">
-        <h1>{{ $username }}</h1>
-        <p>{{ $last_login }}</p>
-        <p class="lead mb-0">A simple and elegant app using Bootstrap 5 and Laravel Blade.</p>
-    </div>
-</section>
-=======
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,11 +85,12 @@
         <div class="container">
             <h1 class="display-6 mb-2">{{ $username }}</h1>
             <p class="lead mb-0">{{ $last_login }}</p>
+            <p class="lead mb-0">A simple and elegant app using Bootstrap 5 and Laravel Blade.</p>
         </div>
     </section>
 
     <!-- Content Section -->
-    <section id="content" class="container ">
+    <section id="content" class="container">
         <div class="row">
             <div class="col-md-6">
                 {{-- About --}}
@@ -169,7 +160,8 @@
             </div>
 
             <div class="col-md-6">
-                <div class="card">
+                <!-- Form Pertanyaan -->
+                <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">Form Pertanyaan</h5>
 
@@ -178,22 +170,23 @@
 
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="nama">
+                                <input type="text" class="form-control" name="nama" id="nama">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" name="email">
+                                <input type="text" class="form-control" name="email" id="email">
                             </div>
                             <div class="mb-3">
                                 <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                                <textarea class="form-control" rows="4" name="pertanyaan"></textarea>
+                                <textarea class="form-control" rows="4" name="pertanyaan" id="pertanyaan"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
                         </form>
                     </div>
                 </div>
+
                 {{-- Alerts --}}
-                <div class="card ">
+                <div class="card mb-4">
                     <div class="card-body">
                         <h3 class="h5 mb-3">Alerts</h3>
                         <div class="alert alert-primary mb-2">Informational alert</div>
@@ -204,7 +197,7 @@
                 </div>
 
                 {{-- Buttons --}}
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-body">
                         <h3 class="h5 mb-3">Buttons</h3>
                         <div class="d-flex flex-wrap gap-2">
@@ -273,4 +266,3 @@
 </body>
 
 </html>
->>>>>>> ab16aded446eadb41929dc46d4e25c0798ace2a9
