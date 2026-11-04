@@ -241,5 +241,30 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+
+    <!-- 1. Panggil library jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- 2. Kode AJAX Anda -->
+        <script>
+            $.ajax({
+                url: 'auth/login',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    username: 'john',
+                    password: '123'
+                },
+                success: function(response) {
+                    console.log('Data submitted successfully');
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error occurred: ' + error);
+                }
+            });
+        </script>
+
     </body>
 </html>
