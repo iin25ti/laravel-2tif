@@ -1,8 +1,5 @@
 <?php
-<<<<<<< HEAD
 
-=======
->>>>>>> ab16aded446eadb41929dc46d4e25c0798ace2a9
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -14,21 +11,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $username = 'Heroku';
-        $last_login = date('Y-m-d H:i:s');
-        $list_pendidikan = ['SD', 'SMP', 'SMA', 'S1', 'S2', 'S3'];
-
-        return view('home', compact('username', 'last_login', 'list_pendidikan'));
-=======
-        /* atau Cara 2 */
         $data = [
             'username'        => 'Laravel 2TIC',
             'last_login'      => date('Y-m-d H:i:s'),
             'list_pendidikan' => ['SD', 'SMP', 'SMA', 'S1', 'S2', 'S3'],
         ];
         return view('home', $data);
->>>>>>> ab16aded446eadb41929dc46d4e25c0798ace2a9
+    }
+
+    /**
+     * Fungsi untuk memproses Request/AJAX Login
+     */
+    public function login(Request $request)
+    {
+        // Ambil input dari request
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        // Mengembalikan respon JSON ke AJAX
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data berhasil diterima Controller!',
+            'data'    => [
+                'username' => $username
+            ]
+        ]);
     }
 
     /**
@@ -78,8 +85,4 @@ class HomeController extends Controller
     {
         //
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ab16aded446eadb41929dc46d4e25c0798ace2a9
