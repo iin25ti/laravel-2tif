@@ -7,7 +7,11 @@
     <title>My Laravel App</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
+    
+    <!-- Pemanggilan Custom CSS External menggunakan Helper asset() -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}">
+
+    <!-- Internal CSS (Bisa kamu pindahkan sebagian/seluruhnya ke custom-style.css jika diperlukan) -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -56,7 +60,12 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">My Laravel App</a>
+            <!-- Pemanggilan Logo di Navbar menggunakan Helper asset() -->
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" height="30">
+                <span>My Laravel App</span>
+            </a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -165,20 +174,31 @@
                     <div class="card-body">
                         <h5 class="card-title">Form Pertanyaan</h5>
 
+                        <!-- Blok Pesan Error Validasi -->
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0 ps-3">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form action="{{ route('question.store') }}" method="POST">
                             @csrf
 
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="nama" id="nama">
+                                <input type="text" class="form-control" name="nama" id="nama" value="{{ old('nama') }}">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" name="email" id="email">
+                                <input type="text" class="form-control" name="email" id="email" value="{{ old('email') }}">
                             </div>
                             <div class="mb-3">
                                 <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                                <textarea class="form-control" rows="4" name="pertanyaan" id="pertanyaan"></textarea>
+                                <textarea class="form-control" rows="4" name="pertanyaan" id="pertanyaan">{{ old('pertanyaan') }}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
                         </form>
